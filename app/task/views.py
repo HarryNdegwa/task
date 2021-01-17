@@ -36,3 +36,12 @@ class LoginView(View):
         if "@" in e:
             return True
         return False
+
+
+
+class AdminView(View):
+
+    template_name = "admin.html"
+
+    def get(self,request):
+        return render(request,self.template_name,{})
