@@ -26,7 +26,7 @@ class LoginView(View):
         if user:
             login(request,user)
             if user.role == "ADMIN":
-                return redirect("/admin/")
+                return redirect("/user/admin/")
             return redirect("/home/")
         return HttpResponse({})
 
@@ -43,7 +43,7 @@ class AdminView(View):
 
     template_name = "admin.html"
 
-    def get(self,request):
+    def post(self,request):
         return render(request,self.template_name,{})
 
 
@@ -52,5 +52,5 @@ class HomeView(View):
 
     template_name = "home.html"
 
-    def get(self,request):
+    def post(self,request):
         return render(request,self.template_name,{})
