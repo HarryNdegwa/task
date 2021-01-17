@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render,redirect
+from django.http import HttpResponse,
 from django.views import View
 from django.contrib.auth import authenticate, login
 
@@ -26,8 +26,8 @@ class LoginView(View):
         if user:
             login(request,user)
             if user.role == "ADMIN":
-                return HttpResponse({})
-            return HttpResponse({})
+                return redirect("/admin/")
+            return redirect("/home/")
         return HttpResponse({})
 
 
