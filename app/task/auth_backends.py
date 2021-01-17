@@ -24,3 +24,27 @@ class EmailAuthBackend(BaseBackend):
             return User.objects.get(pk=user_id)
         except User.DoesNotExist:
             return None
+
+
+
+class PhoneAuthBackend(BaseBackend):
+
+    def authenticate(self,request,phone=None,password=None):
+        try:
+            user = User.objects.get(phone=phone)
+        except User.DoesNotExist:
+            return None
+        else:
+            password_valid = check_password(password,user.password)
+            if not password_valid:
+                return None
+            return user
+
+
+    def get_user(self,user_id):
+        try:
+            return User.objects.get(pk=user_id)
+        except User.DoesNotExist:
+            return None
+
+
