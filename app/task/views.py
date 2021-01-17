@@ -6,9 +6,8 @@ class LoginView(View):
     template_name = "login.html"
 
     def get(self,request):
-        pass
-
-
+        return render(request,self.template_name,{})
+        
 
     def post(self,request):
         pass
