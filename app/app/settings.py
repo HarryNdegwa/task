@@ -46,6 +46,11 @@ INSTALLED_APPS = [
     'task'
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'task.auth_backends.EmailAuthBackend'
+    'task.auth_backends.PhoneAuthBackend'
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
