@@ -43,7 +43,7 @@ class AdminView(View):
 
     template_name = "admin.html"
 
-    def post(self,request):
+    def get(self,request):
         return render(request,self.template_name,{})
 
 
@@ -52,5 +52,5 @@ class HomeView(View):
 
     template_name = "home.html"
 
-    def post(self,request):
+    def get(self,request):
         return render(request,self.template_name,{})
