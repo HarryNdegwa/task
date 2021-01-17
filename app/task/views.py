@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.views import View
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login,logout
 
 class LoginView(View):
 
@@ -54,3 +54,8 @@ class HomeView(View):
 
     def get(self,request):
         return render(request,self.template_name,{})
+
+
+
+def logout_view(request):
+    logout(request)
