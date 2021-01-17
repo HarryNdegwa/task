@@ -47,7 +47,7 @@ INSTALLED_APPS = [
 ]
 
 AUTHENTICATION_BACKENDS = [
-    'task.auth_backends.EmailAuthBackend'
+    'task.auth_backends.EmailAuthBackend',
     'task.auth_backends.PhoneAuthBackend'
 ]
 
