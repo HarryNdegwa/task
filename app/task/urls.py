@@ -10,6 +10,7 @@ urlpatterns = [
     path("user/admin/",AdminView.as_view(),name="admin"),
     path("admin/create/user/",AdminCreateUserView.as_view(),name="admin_create_user"),
     path("admin/edit/user/<int:id>/",AdminEditUserView.as_view(),name="admin_edit_user"),
+    path("admin/delete/user/<int:id>/",AdminDeleteUserView.as_view(),name="admin_delete_user"),
     path("profile/",ProfileView.as_view(),name="profile"),
     path("home/",HomeView.as_view(),name="home")
 ]
