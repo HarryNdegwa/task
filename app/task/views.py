@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.views import View
 from django.contrib.auth import authenticate, login,logout
 
+from .forms import RegisterForm
+
 class LoginView(View):
 
     template_name = "login.html"
@@ -36,6 +38,16 @@ class LoginView(View):
         if "@" in e:
             return True
         return False
+
+
+
+class SignUpView(View):
+
+    template_name = "register.html"
+
+    def get(self,request):
+        form = RegisterForm()
+        return render(request,self.template_name,{"form":form})
 
 
 
