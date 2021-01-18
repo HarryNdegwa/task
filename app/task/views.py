@@ -118,6 +118,15 @@ class AdminView(View):
         return False
 
 
+class AdminViewUser(View):
+
+    template_name = "admin_view_user.html"
+
+    def get(self,request,id):
+        user = User.objects.get(id=id)
+        return render(request,self.template_name,{"user":user})
+
+
 class AdminCreateUserView(View):
 
     template_name = "admin_add_user.html"
