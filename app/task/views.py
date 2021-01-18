@@ -88,13 +88,6 @@ class ProfileView(View):
         return render(request,self.template_name,{"form":form})
 
 
-
-    def check_if_email(self,e):
-        if "@" in e:
-            return True
-        return False
-
-
     def check_if_email_or_phone_changed(self,user,data):
         if user.email != data.get("email"):
             return True
@@ -103,10 +96,7 @@ class ProfileView(View):
         else:
             return False
         
-        
-
-
-
+    
 
 class AdminView(View):
 
@@ -122,7 +112,7 @@ class HomeView(View):
     template_name = "home.html"
 
     def get(self,request):
-        return render(request,self.template_name,{})
+        return render(request,self.template_name,{"user":request.user})
 
 
 
