@@ -15,6 +15,7 @@
 
     <div>
       <p>{{user.name}}</p>
+      <a href="{% url 'admin_view_user' id=user.id %}">View</a>
       <a href="{% url 'admin_edit_user' id=user.id %}">Edit</a>
       <a href="{% url 'admin_delete_user' id=user.id %}">Delete</a>
     </div>
