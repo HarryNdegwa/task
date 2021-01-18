@@ -127,6 +127,14 @@ class AdminActionsView(View):
         return render(request,self.template_name,{"form":form})
 
 
+    def post(self,request):
+        form = RegisterForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect("/user/admin/")
+        return render(request,self.template_name,{"form":form})
+
+
 
 class HomeView(View):
 
