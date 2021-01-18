@@ -10,5 +10,12 @@
     {% if user.is_authenticated %}
     <p><a href="{% url 'logout' %}">Logout</a></p>
     {% endif %}
+    <div>
+      <p>{{user.name}}</p>
+      <p>{{user.email}}</p>
+      <p>{{user.phone}}</p>
+      <p>{{user.role}}</p>
+      <img src="{{user.profile.url}}" alt="profile" />
+    </div>
   </body>
 </html>
