@@ -50,6 +50,17 @@ class SignUpView(View):
         return render(request,self.template_name,{"form":form})
 
 
+    def post(self,request):
+        form = RegisterForm(request.POST,request.FILES)
+        if form.is_valid():
+            user = form.save()
+            login(request,user)
+            return redirect("/home/")
+        return HttpResponse({})
+        
+
+
+
 
 class AdminView(View):
 
