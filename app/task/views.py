@@ -103,7 +103,18 @@ class AdminView(View):
     template_name = "admin.html"
 
     def get(self,request):
-        return render(request,self.template_name,{})
+        users = None
+        if self.check_if_email(str(request.user)):
+            users = User.objects.all().exclude(email = str(request.user))
+        else:
+            users = User.objects.all().exclude(phone = str(request.user))     
+        return render(request,self.template_name,{"users":users})
+
+
+    def check_if_email(self,e):
+        if "@" in e:
+            return True
+        return False
 
 
 
