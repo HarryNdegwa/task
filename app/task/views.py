@@ -118,7 +118,7 @@ class AdminView(View):
         return False
 
 
-class AdminActionsView(View):
+class AdminCreateUserView(View):
 
     template_name = "admin_add_user.html"
 
