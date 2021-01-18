@@ -161,6 +161,13 @@ class AdminEditUserView(View):
         return render(request,self.template_name,{"form":form,"id":id})
 
 
+class AdminDeleteUserView(View):
+
+    def delete(self,request):
+        User.objects.get(id=id).delete()
+        return redirect("/user/admin/")
+
+
 
 class HomeView(View):
 
