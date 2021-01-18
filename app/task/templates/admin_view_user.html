@@ -1,9 +1,11 @@
 {% extends "base.html" %} {% block content %}
-<h3>User Details</h3>
-<p>{{user.name}}</p>
-<p>{{user.email}}</p>
-<p>{{user.phone}}</p>
-<p>{{user.role}}</p>
-<img src="{{user.profile.url}}" alt="profile" />
-<p><a href="{% url 'admin_edit_user' id=user.id %}">Edit User</a></p>
+<div>
+  <p><b>Name:</b>{{user_.name}}</p>
+  <p><b>Email:</b>{{user_.email}}</p>
+  <p><b>Phone:</b>{{user_.phone}}</p>
+  <p><b>Role:</b>{{user_.role}}</p>
+  <p>Profile Image</p>
+  <img src="{{user.profile.url}}" alt="profile" width="200px" />
+  <p><a href="{% url 'admin_edit_user' id=user.id %}">Edit User</a></p>
+</div>
 {% endblock %}

@@ -124,7 +124,7 @@ class AdminViewUser(View):
 
     def get(self,request,id):
         user = User.objects.get(id=id)
-        return render(request,self.template_name,{"user":user})
+        return render(request,self.template_name,{"user_":user})
 
 
 class AdminCreateUserView(View):

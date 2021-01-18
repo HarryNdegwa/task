@@ -1,10 +1,11 @@
 {% extends "base.html" %} {% block content %}
 
 <div>
-  <p>{{user.name}}</p>
-  <p>{{user.email}}</p>
-  <p>{{user.phone}}</p>
-  <p>{{user.role}}</p>
-  <img src="{{user.profile.url}}" alt="profile" />
+  <p><b>Name:</b>{{user.name}}</p>
+  <p><b>Email:</b>{{user.email}}</p>
+  <p><b>Phone:</b>{{user.phone}}</p>
+  <p><b>Role:</b>{{user.role}}</p>
+  <p>Profile Image</p>
+  <img src="{{user.profile.url}}" width="200px" alt="profile" />
 </div>
 {% endblock %}>
