@@ -8,4 +8,4 @@ class RegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        exclude = ["is_staff","is_active"]
+        fields = ["name","email","phone","role","profile","password1","password2"]
