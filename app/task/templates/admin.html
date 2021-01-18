@@ -1,24 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h3>Admin</h3>
-    {% if user.is_authenticated %}
-    <p><a href="{% url 'logout' %}">Logout</a></p>
-    {% endif %}
-    <p><a href="{% url 'admin_create_user' %}">Create User</a></p>
-    {% for user in users %}
+{% extends "base.html" %} {% block content %}
 
-    <div>
-      <p>{{user.name}}</p>
-      <a href="{% url 'admin_view_user' id=user.id %}">View</a>
-      <a href="{% url 'admin_edit_user' id=user.id %}">Edit</a>
-      <a href="{% url 'admin_delete_user' id=user.id %}">Delete</a>
-    </div>
-    {% endfor %}
-  </body>
-</html>
+<h3>Admin</h3>
+<p><a href="{% url 'admin_create_user' %}">Create User</a></p>
+{% for user in users %}
+
+<div>
+  <p>{{user.name}}</p>
+  <a href="{% url 'admin_view_user' id=user.id %}">View</a>
+  <a href="{% url 'admin_edit_user' id=user.id %}">Edit</a>
+  <a href="{% url 'admin_delete_user' id=user.id %}">Delete</a>
+</div>
+{% endfor %} {% endblock %}

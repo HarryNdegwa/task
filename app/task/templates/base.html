@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task</title>
+  </head>
+  <body>
+    <header>
+      <h4>Task</h4>
+      <ul style="list-style: none">
+        <li><a href="{% url 'profile' %}">Profile</a></li>
+        {% if user.role == "ADMIN" %}
+        <li><a href="{% url 'admin' %}">All Users</a></li>
+        {% endif %} {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% endif %}
+      </ul>
+    </header>
+    {% block content %} {% endblock %}
+  </body>
+</html>
