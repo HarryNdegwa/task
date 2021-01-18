@@ -1,9 +1,12 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.views import View
-from django.contrib.auth import authenticate, login,logout
+from django.contrib.auth import authenticate, login,logout,get_user_model
 
 from .forms import RegisterForm,UserUpdateForm
+
+
+User = get_user_model()
 
 class LoginView(View):
 
@@ -62,8 +65,22 @@ class ProfileView(View):
     template_name = "profile_edit.html"
 
     def get(self,request):
-        form = UserUpdateForm()
+        initial_data = {
+            "name":request.user.name,
+            "email":request.user.email,
+            "phone":request.user.phone,
+            "role":request.user.role,
+            "profile":request.user.profile
+        }
+        form = UserUpdateForm(initial=initial_data)
         return render(request,self.template_name,{"form":form})
+
+
+
+    def check_if_email(self,e):
+        if "@" in e:
+            return True
+        return False
         
 
 
