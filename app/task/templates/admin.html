@@ -10,6 +10,7 @@
     {% if user.is_authenticated %}
     <p><a href="{% url 'logout' %}">Logout</a></p>
     {% endif %} {% for user in users %}
+    <p><a href="{% url 'admin_add_user' %}">Create User</a></p>
     <div>
       <p>{{user.name}}</p>
     </div>
