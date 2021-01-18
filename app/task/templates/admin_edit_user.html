@@ -7,7 +7,12 @@
   </head>
   <body>
     <h3>Edit User</h3>
-    <form method="POST" class="form-group" enctype="multipart/form-data">
+    <form
+      method="POST"
+      class="form-group"
+      action="{% url 'admin_edit_user' id=id %}"
+      enctype="multipart/form-data"
+    >
       {% csrf_token %} {{ form.as_p }}
       <button type="submit" class="btn btn-success">Save</button>
     </form>

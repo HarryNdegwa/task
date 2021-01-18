@@ -149,7 +149,16 @@ class AdminEditUserView(View):
             "profile":user.profile
         }
         form = UserUpdateForm(initial=initial_data)
-        return render(request,self.template_name,{"form":form})
+        return render(request,self.template_name,{"form":form,"id":id})
+
+
+    def post(self,request,id):
+        update_user = User.objects.get(id=id)
+        form = UserUpdateForm(request.POST,request.FILES,instance=update_user)
+        if form.is_valid():
+            form.save()
+            return redirect("/user/admin/")
+        return render(request,self.template_name,{"form":form,"id":id})
 
 
 
