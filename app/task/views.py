@@ -27,10 +27,8 @@ class LoginView(View):
 
         if user:
             login(request,user)
-            if user.role == "ADMIN":
-                return redirect("/user/admin/")
             return redirect("/home/")
-        return HttpResponse({})
+        return render(request,self.template_name,{"error":True})
 
 
 
@@ -54,9 +52,8 @@ class SignUpView(View):
         form = RegisterForm(request.POST,request.FILES)
         if form.is_valid():
             user = form.save()
-            login(request,user)
-            return redirect("/home/")
-        return HttpResponse({})
+            return redirect("/login/")
+        return render(request,self.template_name,{"form":form})
         
 
 
