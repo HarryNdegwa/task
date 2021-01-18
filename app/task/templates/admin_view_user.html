@@ -6,11 +6,12 @@
     <title>Document</title>
   </head>
   <body>
-    <h3>View User</h3>
+    <h3>User Details</h3>
     <p>{{user.name}}</p>
     <p>{{user.email}}</p>
     <p>{{user.phone}}</p>
     <p>{{user.role}}</p>
     <img src="{{user.profile.url}}" alt="profile" />
+    <p><a href="{% url 'admin_edit_user' id=user.id %}">Edit User</a></p>
   </body>
 </html>
