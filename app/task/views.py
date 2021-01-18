@@ -163,7 +163,7 @@ class AdminEditUserView(View):
 
 class AdminDeleteUserView(View):
 
-    def delete(self,request,id):
+    def get(self,request,id):
         User.objects.get(id=id).delete()
         return redirect("/user/admin/")
 
