@@ -123,7 +123,8 @@ class AdminActionsView(View):
     template_name = "admin_add_user.html"
 
     def get(self,request):
-        return render(request,self.template_name,{})
+        form = RegisterForm()
+        return render(request,self.template_name,{"form":form})
 
 
 
