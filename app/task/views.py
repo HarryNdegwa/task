@@ -135,6 +135,23 @@ class AdminCreateUserView(View):
         return render(request,self.template_name,{"form":form})
 
 
+class AdminEditUserView(View):
+
+    template_name = "admin_edit_user.html"
+
+    def get(self,request,id):
+        user = User.objects.get(id=id)
+        initial_data = {
+            "name":user.name,
+            "email":user.email,
+            "phone":user.phone,
+            "role":user.role,
+            "profile":user.profile
+        }
+        form = UserUpdateForm(initial=initial_data)
+        return render(request,self.template_name,{"form":form})
+
+
 
 class HomeView(View):
 
