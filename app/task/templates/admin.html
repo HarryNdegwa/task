@@ -9,6 +9,10 @@
     <h3>Admin</h3>
     {% if user.is_authenticated %}
     <p><a href="{% url 'logout' %}">Logout</a></p>
-    {% endif %}
+    {% endif %} {% for user in users %}
+    <div>
+      <p>{{user.name}}</p>
+    </div>
+    {% endfor %}
   </body>
 </html>
