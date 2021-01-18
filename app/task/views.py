@@ -111,10 +111,19 @@ class AdminView(View):
         return render(request,self.template_name,{"users":users})
 
 
+
     def check_if_email(self,e):
         if "@" in e:
             return True
         return False
+
+
+class AdminActionsView(View):
+
+    template_name = "admin_add_user.html"
+
+    def get(self,request):
+        return render(request,self.template_name,{})
 
 
 
