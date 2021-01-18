@@ -22,28 +22,21 @@
         {% csrf_token %}
         <div class="input-group mb-3">
           <div class="input-group-append">
-            <span class="input-group-text"><i class="fas fa-user"></i></span>
+            <span class="input-group-text">Email/Phone</span>
           </div>
-          <input
-            type="text"
-            name="primary"
-            placeholder="Email/Phone"
-            class="form-control"
-          />
+          <input type="text" name="primary" class="form-control" />
         </div>
         <div class="input-group mb-2">
-          <div class="input-group-append">
-            <span class="input-group-text"><i class="fas fa-key"></i></span>
+          <div class="input-group-append" style="margin-top: 10px">
+            <span class="input-group-text">Password</span>
           </div>
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            class="form-control"
-          />
+          <input type="password" name="password" class="form-control" />
         </div>
 
-        <div class="d-flex justify-content-center mt-3 login_container">
+        <div
+          class="d-flex justify-content-center mt-3 login_container"
+          style="margin-top: 10px"
+        >
           <input class="btn login_btn" type="submit" value="Login" />
         </div>
       </form>
