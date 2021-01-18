@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.views import View
 from django.contrib.auth import authenticate, login,logout
 
-from .forms import RegisterForm
+from .forms import RegisterForm,UserUpdateForm
 
 class LoginView(View):
 
@@ -53,6 +53,16 @@ class SignUpView(View):
         if form.is_valid():
             user = form.save()
             return redirect("/login/")
+        return render(request,self.template_name,{"form":form})
+
+
+
+class ProfileEditView(View):
+
+    template_name = "profile_edit.html"
+
+    def get(self,request):
+        form = UserUpdateForm()
         return render(request,self.template_name,{"form":form})
         
 
