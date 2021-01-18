@@ -6,14 +6,17 @@
     <title>Task</title>
   </head>
   <body>
-    <header>
-      <h4>Task</h4>
+    <header style="display: flex">
+      <h2>Task</h2>
       <ul style="list-style: none">
-        <li><a href="{% url 'profile' %}">Profile</a></li>
-        {% if user.role == "ADMIN" %}
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'profile' %}">Edit Profile</a></li>
+        {% endif %} {% if user.role == "ADMIN" %}
         <li><a href="{% url 'admin' %}">All Users</a></li>
         {% endif %} {% if user.is_authenticated %}
         <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}">Login</a></li>
         {% endif %}
       </ul>
     </header>

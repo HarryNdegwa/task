@@ -1,7 +1,21 @@
-{% extends "base.html" %} {% block content %}
-<h3>Register</h3>
-<form method="POST" class="form-group" enctype="multipart/form-data">
-  {% csrf_token %} {{ form.as_p }}
-  <button type="submit" class="btn btn-success">Register</button>
-</form>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+  </head>
+  <body>
+    <header style="display: flex">
+      <h2>Task</h2>
+      <ul style="list-style: none">
+        <li><a href="{% url 'login' %}">Login</a></li>
+      </ul>
+    </header>
+    <h3>Register</h3>
+    <form method="POST" class="form-group" enctype="multipart/form-data">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit" class="btn btn-success">Register</button>
+    </form>
+  </body>
+</html>
