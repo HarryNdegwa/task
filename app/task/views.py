@@ -76,11 +76,33 @@ class ProfileView(View):
         return render(request,self.template_name,{"form":form})
 
 
+    def post(self,request):
+        form = UserUpdateForm(request.POST,request.FILES,instance=request.user)
+        c = self.check_if_email_or_phone_changed(request.user,request.POST)
+        if form.is_valid():
+            form.save()
+            if c:
+                logout(request)
+                return redirect("/login/")
+            return redirect("/home/")
+        return render(request,self.template_name,{"form":form})
+
+
 
     def check_if_email(self,e):
         if "@" in e:
             return True
         return False
+
+
+    def check_if_email_or_phone_changed(self,user,data):
+        if user.email != data.get("email"):
+            return True
+        elif user.phone != data.get("phone"):
+            return True
+        else:
+            return False
+        
         
 
 
