@@ -10,6 +10,8 @@
       <h2>Task</h2>
       <ul style="list-style: none">
         {% if user.is_authenticated %}
+        <li><a href="{% url 'home' %}">Home</a></li>
+        {% endif %} {% if user.is_authenticated %}
         <li><a href="{% url 'profile' %}">Edit Profile</a></li>
         {% endif %} {% if user.role == "ADMIN" %}
         <li><a href="{% url 'admin' %}">All Users</a></li>
