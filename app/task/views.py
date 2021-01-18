@@ -57,7 +57,7 @@ class SignUpView(View):
 
 
 
-class ProfileEditView(View):
+class ProfileView(View):
 
     template_name = "profile_edit.html"
 
