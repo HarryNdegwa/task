@@ -42,5 +42,16 @@ class CustomUser(AbstractBaseUser,PermissionsMixin):
             return e
 
 
+    @staticmethod
+    def decode_auth_token(token):
+        try:
+            payload = jwt.decode(token,"\xd1\xd7\xee_\xab\xd0UB:\x18\x1bh8\xc8\x90\x0eb+\xc67R\xec^\x90",algorithms=["HS256"])
+            return payload["sub"]
+        except jwt.ExpiredSignatureError:
+            return "Token expired! Please log in again."
+        except  jwt.InvalidTokenError:
+            return "Invalid Token! Please log in again."
+
+
     
 
