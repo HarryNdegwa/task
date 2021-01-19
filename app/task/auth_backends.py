@@ -56,7 +56,7 @@ class TokenAuthentication(BaseAuthentication):
     def authenticate(self, request):
 
         """
-            authenticate the request and return a user and token tuple    
+            authenticate the request and return a user and None tuple    
         """
         auth_header = request.headers.get("Authorization")
         if auth_header:
