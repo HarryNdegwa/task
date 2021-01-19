@@ -71,7 +71,7 @@ class UserProfileView(APIView):
 
     def get(self,request,format=None):
         serialized_user = UserSerializer(request.user)
-        return Response(serialized_details.data,status=status.HTTP_200_OK)
+        return Response(serialized_user.data,status=status.HTTP_200_OK)
 
     
     def put(self,request,format=None):
