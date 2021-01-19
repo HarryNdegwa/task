@@ -1,3 +1,4 @@
+import datetime,jwt
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
@@ -25,7 +26,20 @@ class CustomUser(AbstractBaseUser,PermissionsMixin):
 
     def __str__(self):
         return self.email
+        
 
+    
+    def encode_auth_token(self,user_id):
+        try:
+            payload = {        
+                "exp":datetime.datetime.utcnow()+datetime.timedelta(days=30),
+                "iat":datetime.datetime.utcnow(),
+                "sub":int(user_id)
+            }   
+            return jwt.encode(payload,"\xd1\xd7\xee_\xab\xd0UB:\x18\x1bh8\xc8\x90\x0eb+\xc67R\xec^\x90",algorithm="HS256")
+
+        except Exception as e:
+            return e
 
 
     
