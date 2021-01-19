@@ -1,6 +1,7 @@
 from django.urls import path
 
 from .views import *
+from .api_views import *
 
 
 urlpatterns = [
@@ -13,5 +14,6 @@ urlpatterns = [
     path("admin/edit/user/<int:id>/",AdminEditUserView.as_view(),name="admin_edit_user"),
     path("admin/delete/user/<int:id>/",AdminDeleteUserView.as_view(),name="admin_delete_user"),
     path("profile/",ProfileView.as_view(),name="profile"),
-    path("home/",HomeView.as_view(),name="home")
+    path("home/",HomeView.as_view(),name="home"),
+    path("api/login/",SignInView.as_view(),name="sign_in")
 ]

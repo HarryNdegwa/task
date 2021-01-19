@@ -36,7 +36,7 @@ class SignInView(APIView):
         serialized_user = UserSerializer(user)
 
         return Response({
-            'user': serialized_user.data,           
+            # 'user': serialized_user.data,           
             'token': token.decode(),
         },status=status.HTTP_200_OK)
 
@@ -49,3 +49,18 @@ class SignInView(APIView):
         if "@" in e:
             return True
         return False
+
+
+
+class CreateUserView(APIView):
+
+    permission_classes = (permissions.AllowAny,)
+
+    authentication_classes = ()
+
+    def post(self,request,format=None):
+        user_payload = request.data
+        serialized_data = UserSerializer(data=user_payload)
+        serialized_data.is_valid(raise_exception=True)
+        serialized_data.save()
+        return Response({},status=status.HTTP_201_CREATED)
