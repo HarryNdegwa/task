@@ -33,16 +33,10 @@ class SignInView(APIView):
 
         token = user.encode_auth_token(user.id)
 
-        serialized_user = UserSerializer(user)
-
         return Response({          
             'token': token.decode(),
         },status=status.HTTP_200_OK)
 
-
-
-
-    
 
     def check_is_email(self,e):
         if "@" in e:
@@ -61,8 +55,11 @@ class CreateUserView(APIView):
         user_payload = request.data
         serialized_data = UserSerializer(data=user_payload)
         serialized_data.is_valid(raise_exception=True)
-        serialized_data.save()
-        return Response({},status=status.HTTP_201_CREATED)
+        user = serialized_data.save()
+        token = user.encode_auth_token(user.id)
+        return Response({
+            "token":token.decode(),
+        },status=status.HTTP_200_OK)
 
 
 
