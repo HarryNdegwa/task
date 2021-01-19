@@ -35,8 +35,7 @@ class SignInView(APIView):
 
         serialized_user = UserSerializer(user)
 
-        return Response({
-            # 'user': serialized_user.data,           
+        return Response({          
             'token': token.decode(),
         },status=status.HTTP_200_OK)
 
