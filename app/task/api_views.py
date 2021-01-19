@@ -64,3 +64,11 @@ class CreateUserView(APIView):
         serialized_data.is_valid(raise_exception=True)
         serialized_data.save()
         return Response({},status=status.HTTP_201_CREATED)
+
+
+
+class UserProfileView(APIView):
+
+    def get(self,request,format=None):
+        serialized_user = UserSerializer(request.user)
+        return Response(serialized_details.data,status=status.HTTP_200_OK)
