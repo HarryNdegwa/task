@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    
+    'cloudinary',
 
     'task'
 ]
@@ -159,4 +159,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGOUT_REDIRECT_URL = 'login'
+
 
