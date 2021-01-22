@@ -2,6 +2,7 @@ import datetime,jwt
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
+from cloudinary.models import CloudinaryField
 
 
 from .manager import CustomUserManager
@@ -17,7 +18,7 @@ class CustomUser(AbstractBaseUser,PermissionsMixin):
     role = models.CharField(max_length=5,choices=ROLE_CHOICES)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
-    profile = models.ImageField()
+    profile = models.CloudinaryField('image')
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
