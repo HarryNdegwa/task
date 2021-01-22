@@ -160,4 +160,8 @@ STATIC_URL = '/static/'
 
 LOGOUT_REDIRECT_URL = 'login'
 
-
+CLOUDINARY = {
+  'cloud_name': 'dybij6x3m',  
+  'api_key': '827346265893281',  
+  'api_secret': 'vqrChiU8votB3D0i8WAGAIjP8bw',  
+}

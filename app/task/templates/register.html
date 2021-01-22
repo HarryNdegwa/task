@@ -1,8 +1,4 @@
-{% load cloudinary %}
-
-{% cloudinary_includes %}
-
-{% cloudinary_js_config %}
+{% load cloudinary %} {% cloudinary_includes %} {% cloudinary_js_config %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +6,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register</title>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <header style="display: flex">
@@ -21,7 +22,6 @@
     <h3>Register</h3>
     <form method="POST" class="form-group" enctype="multipart/form-data">
       {% csrf_token %} {{ form.as_p }}
-      {% cloudinary_direct_upload_field field='profile' request=request %}
       <button type="submit" class="btn btn-success">Register</button>
     </form>
   </body>
