@@ -1,3 +1,9 @@
+{% load cloudinary %}
+
+{% cloudinary_includes %}
+
+{% cloudinary_js_config %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,6 +21,7 @@
     <h3>Register</h3>
     <form method="POST" class="form-group" enctype="multipart/form-data">
       {% csrf_token %} {{ form.as_p }}
+      {% cloudinary_direct_upload_field field='profile' request=request %}
       <button type="submit" class="btn btn-success">Register</button>
     </form>
   </body>

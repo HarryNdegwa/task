@@ -18,7 +18,7 @@ class CustomUser(AbstractBaseUser,PermissionsMixin):
     role = models.CharField(max_length=5,choices=ROLE_CHOICES)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
-    profile = models.CloudinaryField('image')
+    profile = CloudinaryField('image')
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
