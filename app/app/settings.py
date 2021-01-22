@@ -43,14 +43,25 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
+    
 
     'task'
+]
+
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:19006",
+    "http://127.0.0.1:19006"
 ]
 
 AUTHENTICATION_BACKENDS = [
     'task.auth_backends.EmailAuthBackend',
     'task.auth_backends.PhoneAuthBackend',
     'django.contrib.auth.backends.ModelBackend'
+]
+
+INTERNAL_IPS = [
+    '127.0.0.1'
 ]
 
 REST_FRAMEWORK = {
@@ -62,10 +73,12 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_PARSER_CLASSES': [
         'rest_framework.parsers.MultiPartParser',
+        'rest_framework.parsers.FormParser',
     ]
 }
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -146,3 +159,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGOUT_REDIRECT_URL = 'login'
+

@@ -3,13 +3,15 @@ from django.contrib.auth import get_user_model,authenticate
 from rest_framework.views import  APIView
 from rest_framework.response import Response
 from rest_framework import permissions,status
-
+from rest_framework.parsers import JSONParser,MultiPartParser,FormParser,FileUploadParser
 
 from .serializers import UserSerializer
 
 
 
 class SignInView(APIView):
+
+    parser_classes = [JSONParser]
 
     permission_classes = (permissions.AllowAny,)
 
@@ -47,6 +49,8 @@ class SignInView(APIView):
 
 class CreateUserView(APIView):
 
+    parser_classes = (MultiPartParser, FormParser)
+
     permission_classes = (permissions.AllowAny,)
 
     authentication_classes = ()
@@ -65,12 +69,14 @@ class CreateUserView(APIView):
 
 class UserProfileView(APIView):
 
+    parser_classes = (MultiPartParser, FormParser)
+
     def get(self,request,format=None):
         serialized_user = UserSerializer(request.user)
         return Response(serialized_user.data,status=status.HTTP_200_OK)
 
     
-    def put(self,request,format=None):
+    def post(self,request,format=None):
         serialized_user = UserSerializer(instance=request.user,data=request.data,partial=True)
         serialized_user.is_valid(raise_exception=True)
         serialized_user.save()
