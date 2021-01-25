@@ -1,10 +1,15 @@
+import cloudinary
+
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
+ 
 
+cloudinary.config(cloud_name='dybij6x3m',
+                  api_key='827346265893281',
+                  api_secret='vqrChiU8votB3D0i8WAGAIjP8bw')
 
-from rest_framework import serializers    
 
 class Base64ImageField(serializers.ImageField):
     """
@@ -67,7 +72,9 @@ class UserSerializer(serializers.ModelSerializer):
 
     def create(self,validated_data):
         password = validated_data.pop("password",None)
-        instance = self.Meta.model(**validated_data)
+        profile = validated_data.pop("profile")
+        profile_data = cloudinary.utils.cloudinary_url(str(profile))
+        instance = self.Meta.model(profile=profile_data[0],**validated_data)
         if password:
             instance.set_password(password)
         instance.save()
